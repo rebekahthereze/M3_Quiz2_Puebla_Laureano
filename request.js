@@ -2,6 +2,7 @@
 
 var selectStarter=document.getElementById('starter');
 var selectValue=selectStarter.value;
+playBG();
 
 //API link of each Pokemon
 var pikachuAPI='https://pokeapi.co/api/v2/pokemon/pikachu';
@@ -21,6 +22,12 @@ var rowletImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/
 var froakieImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/656.png';
 var turtwigImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/387.png';
 
+function playBG(){
+    var audio = new Audio('assets/bg.mp3');
+    audio.volume=0.7;
+    audio.play();
+}
+
 function changingStats(stat,id){//changes numbers/stats
     var statArea=document.getElementById(id);
     statArea.innerHTML=stat;   
@@ -32,7 +39,7 @@ function changingType(stat,id){//changes the pokemon type
     statArea.innerHTML=stat;
 }
 
-function changingContainerColor(pokemonColor){
+function changingContainerColor(pokemonColor){//changes color of container
     document.getElementById("container-box").style.background=pokemonColor;
 }
 
@@ -50,7 +57,7 @@ function capitalizeFirstLetter(string) {//capitalizing strings
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function playPokemonSound(pokemonSound){
+function playPokemonSound(pokemonSound){//plays pokemon sound
     var audio = new Audio(pokemonSound);
     audio.loop=false;
     audio.play();
