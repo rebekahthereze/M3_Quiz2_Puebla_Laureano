@@ -60,6 +60,12 @@ html {
     float: left;
     width: 50%;
 }
+.row{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 .pokemon-img {
     height: 200px;
 }

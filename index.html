@@ -18,37 +18,39 @@
 
         <div class="starter-options">
             <label for="starters">SELECT</label>
-            <select name="starters" id="starter">
-                <option value="1">Pikachu</option>
-                <option value="2">Eevee</option>
+            <select name="starters" id="starter" onchange="getPokemon(this)">
+                <option value="1" selected='selected'>Pikachu</option>
+                <option value="2" >Eevee</option>
                 <option value="3">Piplup</option>
                 <option value="4">Charmander</option>
                 <option value="5">Rowlet</option>
-                <option value="6">Greninja</option>
+                <option value="6">Froakie</option>
                 <option value="7">Turtwig</option>
             </select>
 
         <div class="containers">
-            <img class = "pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" alt="">
+            <img class = "pokemon-img" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png" 
+            alt="Pokemon Image Here">
             <h1 class="name">Pikachu</h1>
                 <div class = "pokemon-info">
-                    <h1>HP 35</h1>
+                    <div class='row'>
+                        <h1 style="margin-right: 0.5rem;">HP </h1><h1 id='hp'>35</h1>
+                    </div>
 
                     <div>
-                        <h4>Type</h4> <h2>Electric / Speed</h2>
+                        <h4>Type</h4> <h2 id='type'>Electric</h2>
                     </div>
                     <div>
                         <div class="column">
-                            <h4>Attack</h4> <h2>55</h2>
-                            <h4>Special Attack</h4> <h2>50</h2>
+                            <h4>Attack</h4> <h2 id='attack'>55</h2>
+                            <h4>Special Attack</h4> <h2 id='special-attack'>50</h2>
                         </div>
                         <div class="column">
-                            <h4>Defense</h4> <h2>40</h2>
-                            <h4>Special Defense</h4> <h2>55</h2>
+                            <h4>Defense</h4> <h2 id='defense'>40</h2>
+                            <h4>Special Defense</h4> <h2 id='special-defense'>50</h2>
                         </div>
-                        <h4>Speed</h4> <h2>90</h2>
+                        <h4>Speed</h4> <h2 id='speed'>90</h2>
                         
-
                     </div>
 
 
@@ -56,5 +58,8 @@
             </div>
 
         </div>
+        
     </body>
+
+    <script src="request.js"></script>
 </html>
