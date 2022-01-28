@@ -21,72 +21,97 @@ var rowletImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/
 var froakieImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/656.png';
 var turtwigImg='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/387.png';
 
-function changingStats(stat,id){
+function changingStats(stat,id){//changes numbers/stats
     var statArea=document.getElementById(id);
     statArea.innerHTML=stat;   
 }
 
-function changingType(stat,id){
+function changingType(stat,id){//changes the pokemon type
     var stat=capitalizeFirstLetter(stat);
     var statArea=document.getElementById(id);
-    statArea.innerHTML=stat;   
+    statArea.innerHTML=stat;
 }
 
-function changingName(name){
+function changingContainerColor(pokemonColor){
+    document.getElementById("container-box").style.background=pokemonColor;
+}
+
+function changingName(name){//changes the pokemon name
     var name= capitalizeFirstLetter(name);
     document.getElementById('pokemon-name').innerHTML=name;
 }
 
-function changingImage(pokemonImg){
+function changingImage(pokemonImg){//changes the pokemon image
     document.getElementById('starter-img').src=pokemonImg;
     document.getElementById('pokemon-name').innerText='';
 }
 
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string) {//capitalizing strings
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function playPokemonSound(pokemonSound){
+    var audio = new Audio(pokemonSound);
+    audio.loop=false;
+    audio.play();
+
+}
+//checks if the pokemon API available
 function checkPokemonAPI(selectValue){
     var finalPokemon;
     console.log(selectValue);
     switch(selectValue){
         
-        case '1':
+        case '1'://pikachu pokemon
             finalPokemon=pikachuAPI;
             changingImage(pikachuImg);
+            playPokemonSound('assets/pikachu.mp3')
+            changingContainerColor('#E0D268');
             break;
-        case '2':
+        case '2'://eevee pokemon
             finalPokemon=eeveeAPI;
             changingImage(eeveeImg);
+            playPokemonSound('assets/eevee.mp3')
+            changingContainerColor('#A8A878');
             break;
-        case '3':
+        case '3'://piplup
             finalPokemon=piplupAPI;
             changingImage(piplupImg);
+            playPokemonSound('assets/piplup.mp3')
+            changingContainerColor('#6890F0')
             break;
-        case '4':
+        case '4'://charmander
             finalPokemon=charmanderAPI;
             changingImage(charmanderImg);
+            playPokemonSound('assets/charmander.mp3')
+            changingContainerColor('#F08030')
             break;
-        case '5':
+        case '5'://rowlet
             finalPokemon=rowletAPI;
             changingImage(rowletImg);
+            playPokemonSound('assets/rowlet.mp3')
+            changingContainerColor('#A7DB8D');
             break;
-        case '6':
+        case '6'://froakie
             finalPokemon=froakieAPI;
             changingImage(froakieImg);
+            playPokemonSound('assets/froakie.mp3')
+            changingContainerColor('#6890F0')
             break;
-        case '7':
+        case '7'://turtwig
             finalPokemon=turtwigAPI;
             changingImage(turtwigImg);
+            playPokemonSound('assets/turtwig.mp3')
+            changingContainerColor('#A7DB8D');
             break;
-        default:
+        default://error if not found
             console.log("Error, Could not Find API");
             finalPokemon='error';
             break;
     }
     return finalPokemon;
 }
-
+//if user chooses pokemon from drop down
 function getPokemon(selectedPokemon){
     var selectValue=selectedPokemon.value;
     var pokemonAPI= checkPokemonAPI(selectValue);
@@ -103,6 +128,7 @@ function getPokemon(selectedPokemon){
         response.json().then(function(data){
             var changeStat;//initial value   
             console.log(data);
+            //name
             changingName(data.name);
             //type
             changeStat=data.types[0].type.name;
